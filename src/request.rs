@@ -133,6 +133,7 @@ pub struct Resolution {
 pub struct ResolutionsPerAuthority {
     pub authority: String,
     pub status: Status,
+    #[serde(default)]
     pub values: Vec<ValueWrapper>,
 }
 
@@ -655,7 +656,33 @@ mod tests {
                             "value": "bob",
                             "confirmationStatus": "NONE",
                             "source": "USER"
-                        }
+                        },
+                        "relation": {
+                            "name": "name",
+                            "value": "uncle",
+                            "confirmationStatus": "NONE",
+                            "source": "USER",
+                            "resolutions":{
+                                "resolutionsPerAuthority":[
+                                    {
+                                        "authority": "AlexaEntities",
+                                        "status": { "code": "ER_SUCCESS_MATCH" },
+                                        "values": [
+                                            {
+                                                "value": {
+                                                    "name": "uncle",
+                                                    "id": "dads:brother"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "authority": "UnclePete",
+                                        "status": { "code": "ER_NO_MATCH" }
+                                    }
+                                ]
+                            }
+                        },
                     }
                 }
             }

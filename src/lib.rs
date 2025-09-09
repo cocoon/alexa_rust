@@ -23,6 +23,7 @@
 //!     Ok(())
 //! }
 //! 
+//! # #[cfg(not(feature = "doctest"))]
 //! # fn main() {}
 //! ```
 //!
@@ -71,6 +72,7 @@
 //!     Ok(())
 //! }
 //! 
+//! # #[cfg(not(feature = "doctest"))]
 //! # fn main() {}
 //! ```
 

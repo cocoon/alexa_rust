@@ -294,10 +294,6 @@ impl Default for Image {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
-
-    use crate::audioplayer::{AudioItem, PlayDirective, Stream};
-
     use super::*;
 
     #[test]
@@ -423,8 +419,12 @@ mod tests {
         assert_eq!(r.response.should_end_session, true);
     }
 
+    #[cfg(feature = "audioplayer")]
     #[test]
     fn default_with_directives() {
+        use serde_json::json;
+        use crate::audioplayer::{AudioItem, PlayDirective, Stream};
+        
         let a = Directive::Play(PlayDirective {
             play_behavior: PlayBehavior::ReplaceAll,
             audio_item: AudioItem {
